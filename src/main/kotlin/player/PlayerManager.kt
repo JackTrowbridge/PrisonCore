@@ -12,6 +12,7 @@ import net.minestom.server.instance.InstanceContainer
 import net.minestom.server.item.ItemComponent
 import net.minestom.server.item.ItemStack
 import net.minestom.server.item.Material
+import net.minestom.server.network.packet.server.play.EntityAnimationPacket
 import java.util.UUID
 import java.util.concurrent.ConcurrentHashMap
 

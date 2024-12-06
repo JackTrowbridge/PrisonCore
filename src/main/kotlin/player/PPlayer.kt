@@ -13,6 +13,10 @@ class PPlayer(private var player: Player) {
         private set
     var rank: PlayerRank = PlayerRank.ADMIN
         private set
+    var maxBaseHealth: Int = 100
+        private set
+    var baseHealth: Int = 100
+        private set
 
     fun addCoins(amount: Int) {
         coins += amount

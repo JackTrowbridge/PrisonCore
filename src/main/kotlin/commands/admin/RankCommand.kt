@@ -12,12 +12,7 @@ class RankCommand : Command("rank") {
     init {
 
         setCondition { sender, _ ->
-            if (sender is Player) {
-                val prisonPlayer = PlayerManager.getPlayer(sender.uuid)
-                prisonPlayer?.rank == PlayerRank.ADMIN
-            } else {
-                true
-            }
+            CommandManager.checkAdmin(sender)
         }
 
 
@@ -31,12 +26,8 @@ class RankCommand : Command("rank") {
                 val targetName = context.get(ArgumentType.String("target"))
                 val rank = context.get(ArgumentType.Enum("rank", PlayerRank::class.java))
 
-                if (sender is Player) {
-                    val prisonPlayer = PlayerManager.getPlayer(sender.uuid)
-                    if (prisonPlayer?.rank != PlayerRank.ADMIN) {
-                        sender.sendMessage("You do not have permission to execute this command.")
-                        return@addSyntax
-                    }
+                if(!CommandManager.checkAdminDuringCommand(sender)){
+                    return@addSyntax
                 }
 
                 val targetPlayer = MinecraftServer.getConnectionManager()
